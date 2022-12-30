@@ -53,10 +53,22 @@ class Favorites extends StatelessWidget {
         {
            return Padding(
                 padding: const EdgeInsets.all(10.0),
-                child:  Lottie.asset(
-                     'assets/error.json',
-                     height: 70,width: 70
-                     ),
+                child:  RefreshIndicator(
+                  onRefresh: () async =>controller.loadFavorite() ,
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Lottie.asset(
+                             'assets/error.json',
+                             height: 70,width: 70
+                             ),
+                             Text('Error exist', style: CustomTextStyle.getTitleFont())
+                      ],
+                    ),
+                  ),
+                ),
               );
         },
         onEmpty: RefreshIndicator(

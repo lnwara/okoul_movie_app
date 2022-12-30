@@ -4,10 +4,8 @@ import 'package:get/get.dart';
 import 'package:okoul_movie_app/controllers/detailsController.dart';
 import 'package:okoul_movie_app/helpers/style.dart';
 import 'package:okoul_movie_app/models/movie.dart';
-
 import '../../Helpers/config.dart';
 import '../../helpers/constants.dart';
-import '../components/common/animatedContent.dart';
 import '../components/common/castContainer.dart';
 
 class MovieDetails extends GetView<DetailsController> {
@@ -28,54 +26,16 @@ class MovieDetails extends GetView<DetailsController> {
       (
         slivers: 
         [
-          SliverAppBar
-          (
-            pinned: true,
-            backgroundColor: Colors.transparent,
-            expandedHeight: SizeConfig.screenHeight!*0.7,
-            flexibleSpace: FlexibleSpaceBar
-            (
-              background: Image.network(movie.poster_path,fit: BoxFit.cover, 
-              //width: double.maxFinite,
-              ), 
-              //stretchModes: [StretchMode.zoomBackground],
-            ),
-            bottom: PreferredSize
-            (
-              preferredSize: const Size.fromHeight(60),
-              child: Container
-              (
-                child: Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: Center(child: Text(
-                    movie.title,
-                    style: CustomTextStyle.sliverHeaderStyle(),
-                    )),
-
-                ),
-                width: double.maxFinite,
-                padding: const EdgeInsets.all(9),
-             
-                decoration: const BoxDecoration
-                (
-                  color: Colors.black54,
-                  borderRadius: BorderRadius.only(
-                    topLeft:Radius.circular(20),
-                    topRight: Radius.circular(20))
-                ),
-              ),
-            ),
-
-          ),
+          DetailsSliverAppBar(movie: movie),
            SliverToBoxAdapter
            (
              child: Column(
-               //color: Get.isDarkMode? Colors.transparent:Colors.white70,
+              crossAxisAlignment: CrossAxisAlignment.start,
                children: 
                [
                 Row
                 (
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: 
                   [
                     const Icon(Icons.calendar_month, color: Constants.kGreyColor, semanticLabel: 'Release date',),
@@ -103,14 +63,17 @@ class MovieDetails extends GetView<DetailsController> {
                   ],
                 ),
                  Padding(
-                   padding: const EdgeInsets.only(top:20, bottom: 20),
+                   padding: const EdgeInsets.only(top:20, bottom: 20, right: 15, left: 15),
                    child: Text('OverView', style: CustomTextStyle.getTitleFont(),),
                  ),
-                 Text(movie.overview,
-                 style: CustomTextStyle.sliverBodyStyle(),
+                 Padding(
+                   padding: const EdgeInsets.only(right: 15, left: 15),
+                   child: Text(movie.overview,
+                   style: CustomTextStyle.sliverBodyStyle(),
+                   ),
                  ),
                  Padding(
-                   padding: const EdgeInsets.only(top:20, bottom: 20),
+                   padding: const EdgeInsets.only(top:20, bottom: 20,right: 15, left: 15),
                    child: Text('Casts', style: CustomTextStyle.getTitleFont(),),
                  ),
                    controller.obx((state) {
@@ -125,15 +88,69 @@ class MovieDetails extends GetView<DetailsController> {
                                  
                       
                       
-                    )
+                    ),
+                    
                    );},
                   onLoading: const Center(child:  CircularProgressIndicator(color: Constants.kGreenColor,))
-                   )
+                   ),
+                   SizedBox(height: 50,)
                ],
                 ),
            )
         ],
       ),
+    );
+  }
+}
+
+class DetailsSliverAppBar extends StatelessWidget {
+  const DetailsSliverAppBar({
+    Key? key,
+    required this.movie,
+  }) : super(key: key);
+
+  final MovieModel movie;
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverAppBar
+    (
+      pinned: true,
+      backgroundColor: Colors.transparent,
+      expandedHeight: SizeConfig.screenHeight!*0.7,
+      flexibleSpace: FlexibleSpaceBar
+      (
+        background: Image.network(movie.poster_path,fit: BoxFit.cover, 
+        //width: double.maxFinite,
+        ), 
+        //stretchModes: [StretchMode.zoomBackground],
+      ),
+      bottom: PreferredSize
+      (
+        preferredSize: const Size.fromHeight(60),
+        child: Container
+        (
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Center(child: Text(
+              movie.title,
+              style: CustomTextStyle.sliverHeaderStyle(),
+              )),
+
+          ),
+          width: double.maxFinite,
+          padding: const EdgeInsets.all(9),
+       
+          decoration: const BoxDecoration
+          (
+            color: Colors.black54,
+            borderRadius: BorderRadius.only(
+              topLeft:Radius.circular(20),
+              topRight: Radius.circular(20))
+          ),
+        ),
+      ),
+
     );
   }
 }

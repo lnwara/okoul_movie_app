@@ -100,7 +100,7 @@ class MovieContainerSection extends StatelessWidget {
                       {
                         return  Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Lottie.asset(
+                          child: Lottie.asset(tabController.genresHasError!.id==1?'assets/noInternet.json':
                           'assets/error.json',
                           height: 70,width: 70
                           ),

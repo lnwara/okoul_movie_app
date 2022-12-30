@@ -6,7 +6,6 @@ import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:okoul_movie_app/controllers/paginationController.dart';
 import 'package:okoul_movie_app/controllers/playingNowController.dart';
-import 'package:okoul_movie_app/models/errorModel.dart';
 import 'package:okoul_movie_app/views/components/playingNow/playingNowSkelton.dart';
 import '../../../Helpers/config.dart';
 import '../../../helpers/constants.dart';

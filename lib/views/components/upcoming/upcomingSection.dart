@@ -59,11 +59,14 @@ class UpcomingSection extends GetView<UpcomingController> {
                        ),
                       onError: (e)
                       {
-                        if(e is ErrorModel){
-                          return Lottie.asset(
-                           'assets/noInternet.json',
-                           height: 70,width: 70
-                           );
+                        if(e =="1"){
+                          return SizedBox(
+                            height: 200,
+                            child: Lottie.asset(
+                             'assets/noInternet.json',
+                             height: 70,width: 70
+                             ),
+                          );
                          }
                          else
                          {
