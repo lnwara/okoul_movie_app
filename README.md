@@ -1,16 +1,31 @@
-# okoul_movie_app
+# Movie App | Okoul Challange 
 
-A new Flutter project.
+## Overview
 
-## Getting Started
+Movie App is a flutter application developped on top of [TMDB](https://www.themoviedb.org) api to provide the following main features:
 
-This project is a starting point for a Flutter application.
+- Exploration of playing now, trending and upcoming movies.
+- Explore all movies based on genres.
+- Details of each movie.
+- Ability to add movies to local favorite list.
+- Customized UI - dark or light mode.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+
+## How it looks
+
+
+
+
+
+https://user-images.githubusercontent.com/16342211/210113938-382c8af5-a79c-4562-b2de-109596a6780e.mp4
+
+
+
+## More details
+
+This app depands on [GetX](https://pub.dev/packages/get) package for state management, routing and local storage, and mainly follow the MVC architecture style.
+Moreover, it expected to handle connectivity and other general exceptions in friendly manner.
+
